@@ -5,17 +5,33 @@ const initialForm = { name: "", email: "", phone: "", lookingFor: "", message: "
 
 export default function ContactSection() {
   const [form, setForm] = useState(initialForm);
-  const [submitted, setSubmitted] = useState(false);
+  const [submissionStatus, setSubmissionStatus] = useState("idle");
 
   const updateField = (event) => {
-    setSubmitted(false);
+    if (submissionStatus === "error") setSubmissionStatus("idle");
     setForm((current) => ({ ...current, [event.target.name]: event.target.value }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    setSubmitted(true);
-    setForm(initialForm);
+    const formData = new URLSearchParams(new FormData(event.currentTarget)).toString();
+    setSubmissionStatus("submitting");
+
+    try {
+      const response = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: formData,
+      });
+
+      if (!response.ok) throw new Error(`Netlify form submission failed with status ${response.status}`);
+
+      setSubmissionStatus("success");
+      setForm(initialForm);
+    } catch (error) {
+      console.error("Contact form submission failed", error);
+      setSubmissionStatus("error");
+    }
   };
 
   return (
@@ -27,15 +43,15 @@ export default function ContactSection() {
           <a href="mailto:thehumblesmoker@gmail.com" className="contact-email">thehumblesmoker@gmail.com <span aria-hidden="true">↗</span></a>
         </div>
         <div className="contact-form-wrap reveal">
-          {submitted ? (
+          {submissionStatus === "success" ? (
             <div className="form-success" role="status" aria-live="polite">
               <span className="success-mark" aria-hidden="true">✓</span>
-              <h3>Thanks for stopping by.</h3>
-              <p>This is a portfolio demo, so your message hasn&apos;t been sent. Call or email the store to get in touch.</p>
-              <button className="text-link" type="button" onClick={() => setSubmitted(false)}>Send another enquiry <span aria-hidden="true">↗</span></button>
+              <h3>Thanks — your enquiry has been sent.</h3>
+              <button className="text-link" type="button" onClick={() => setSubmissionStatus("idle")}>Send another enquiry <span aria-hidden="true">↗</span></button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit}>
+            <form name="contact" method="POST" action="/" data-netlify="true" onSubmit={handleSubmit}>
+              <input type="hidden" name="form-name" value="contact" />
               <div className="form-row">
                 <label>Name<input name="name" autoComplete="name" value={form.name} onChange={updateField} required /></label>
                 <label>Email<input name="email" type="email" autoComplete="email" value={form.email} onChange={updateField} required /></label>
@@ -56,8 +72,14 @@ export default function ContactSection() {
               </div>
               <label>Message<textarea name="message" rows="3" value={form.message} onChange={updateField} required /></label>
               <div className="form-submit-row">
-                <button className="button button--accent" type="submit">Send enquiry <span aria-hidden="true">↗</span></button>
-                <p>Demo form — no message is sent or stored.</p>
+                <button className="button button--accent" type="submit" disabled={submissionStatus === "submitting"} aria-busy={submissionStatus === "submitting"}>
+                  {submissionStatus === "submitting" ? "Sending..." : "Send enquiry"} <span aria-hidden="true">↗</span>
+                </button>
+                {submissionStatus === "error" && (
+                  <p className="form-error" role="alert">
+                    Your enquiry wasn&apos;t sent. Please try again or call +27 61 159 5565.
+                  </p>
+                )}
               </div>
             </form>
           )}

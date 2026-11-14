@@ -4,7 +4,6 @@ import Hero from "./components/Hero.jsx";
 import AboutSection from "./components/AboutSection.jsx";
 import ShopCategories from "./components/ShopCategories.jsx";
 import WhyVisit from "./components/WhyVisit.jsx";
-import LifestyleSection from "./components/LifestyleSection.jsx";
 import StoreInfo from "./components/StoreInfo.jsx";
 import ContactSection from "./components/ContactSection.jsx";
 import WhatsAppButton from "./components/WhatsAppButton.jsx";
@@ -41,7 +40,6 @@ export default function App() {
         <AboutSection />
         <ShopCategories />
         <WhyVisit />
-        <LifestyleSection />
         <StoreInfo />
         <ContactSection />
       </main>

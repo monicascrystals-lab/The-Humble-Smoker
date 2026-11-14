@@ -14,7 +14,7 @@
   --paper: #f1efe9;
   --muted: #9c9b95;
   --line: rgba(241, 239, 233, 0.14);
-  --amber: #b98248;
+  --amber: #8b5f0b;
   --serif: "Playfair Display", Georgia, serif;
   --shell: 1240px;
 }
@@ -206,7 +206,8 @@ img, video { display: block; max-width: 100%; }
 .contact-form-wrap option { background: #171916; color: var(--paper); }
 .form-submit-row { display: flex; align-items: center; gap: 17px; margin-top: 2px; }
 .form-submit-row .button { min-height: 47px; }
-.form-submit-row > p { margin: 0; color: #85867f; font-size: 9px; }
+.form-submit-row > p { margin: 0; color: #e3a18e; font-size: 9px; }
+.form-submit-row .button:disabled { cursor: wait; opacity: .7; }
 .form-success { min-height: 330px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; }
 .success-mark { display: grid; width: 40px; height: 40px; place-items: center; border: 1px solid var(--amber); border-radius: 50%; color: #d2a16d; }
 .form-success h3 { margin: 20px 0 8px; font-family: var(--serif); font-size: 26px; font-weight: 500; }
@@ -216,6 +217,7 @@ img, video { display: block; max-width: 100%; }
 /* Footer */
 .site-footer { padding-top: 67px; background: #0d0f0d; }
 .footer-main { display: grid; grid-template-columns: 1.3fr .8fr 1.2fr 1fr; gap: 45px; padding-bottom: 57px; }
+.footer-brand__logo { display: block; width: 64px; max-width: 100%; height: auto; }
 .footer-brand > p { margin: 18px 0 17px; color: #d4d1c9; font-family: var(--serif); font-size: 16px; line-height: 1.5; }
 .social-links { display: flex; gap: 9px; }
 .social-links a { display: grid; width: 32px; height: 32px; place-items: center; border: 1px solid rgba(241,239,233,.21); border-radius: 50%; transition: border-color .2s, color .2s; }
