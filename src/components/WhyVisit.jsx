@@ -1,3 +1,4 @@
+import humbleSuiteVideo from "../assets/videos/humble-smokevid.mp4";
 import SectionHeading from "./SectionHeading.jsx";
 
 const reasons = [
@@ -26,11 +27,9 @@ export default function WhyVisit() {
         </div>
       </div>
       <div className="humble-suite">
-        <img
-          src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=2200&q=85"
-          alt=""
-          loading="lazy"
-        />
+        <video className="humble-suite__video" autoPlay muted loop playsInline aria-hidden="true">
+          <source src={humbleSuiteVideo} type="video/mp4" />
+        </video>
         <div className="humble-suite__overlay" />
         <div className="humble-suite__content reveal">
           <p className="eyebrow eyebrow--light">Make yourself at home</p>

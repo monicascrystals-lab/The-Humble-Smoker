@@ -1,27 +1,28 @@
+import rollingAccessoriesImage from "../assets/images/shop/rollin-accessories.png";
+import glasswareImage from "../assets/images/shop/glassware-accessories.png";
+import headImage from "../assets/images/shop/head.png";
+
 export const categories = [
   {
     number: "01",
     title: "Rolling Accessories",
     description: "Papers, filters, trays and everyday essentials.",
-    image:
-      "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?auto=format&fit=crop&w=1000&q=85",
+    image: rollingAccessoriesImage,
     alt: "Warmly lit collection of natural, textured everyday accessories",
   },
   {
     number: "02",
     title: "Glassware",
-    description: "Stylish and practical smoking accessories.",
-    image:
-      "https://images.unsplash.com/photo-1513506003901-1e6a229e2d15?auto=format&fit=crop&w=1000&q=85",
+    description: "Bongs, dab rigs and other glass accessories.",
+    image: glasswareImage,
     alt: "Sculptural glassware catching soft amber light",
   },
   {
     number: "03",
-    title: "Storage",
-    description: "Functional storage and organisation products.",
-    image:
-      "https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?auto=format&fit=crop&w=1000&q=85",
-    alt: "Thoughtfully arranged storage and home objects",
+    title: "Heads",
+    description: "Highest quality buds, All strains and varieties of cannabis buds.",
+    image: headImage,
+    alt: "All strains and varieties of cannabis buds",
   },
   {
     number: "04",
