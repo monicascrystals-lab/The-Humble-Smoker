@@ -34,8 +34,6 @@ export default function Hero() {
           <a href={directions} target="_blank" rel="noreferrer">Langenhoven Park, Bloemfontein <span aria-hidden="true">↗</span></a>
         </div>
       </div>
-      <a className="hero-scroll" href="#about"><span /> Scroll to explore</a>
-      <div className="hero-index" aria-hidden="true">01 <span /> 08</div>
     </section>
   );
 }
