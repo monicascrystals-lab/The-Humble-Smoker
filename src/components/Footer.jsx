@@ -1,4 +1,4 @@
-import logo from "../assets/images/the humble smoker.jpg";
+import logo from "../assets/images/humble-smoke-logo.svg";
 
 const phone = "tel:+27611595565";
 const address =

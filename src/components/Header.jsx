@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import logo from "../assets/images/the humble smoker.jpg";
+import logo from "../assets/images/humble-smoke-logo.svg";
 
 const links = [
   { label: "Home", href: "#home" },
@@ -31,7 +31,7 @@ export default function Header() {
     <header className={`site-header${scrolled ? " site-header--scrolled" : ""}`}>
       <div className="header-inner">
         <a className="brand header-brand" href="#home" aria-label="The Humble Smoker home" onClick={closeMenu}>
-          <img className="header-brand__logo" src={logo} alt="" />
+          <img className="header-brand__logo" src={logo} alt="The Humble Smoker" />
         </a>
         <button
           className={`menu-toggle${menuOpen ? " menu-toggle--open" : ""}`}
